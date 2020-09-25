@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.springframework.data.annotation.CreatedDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,6 +21,7 @@ public class Post {
 
     private @NonNull String title;
 
+    @Column(columnDefinition="TEXT")
     private @NonNull String content;
 
     @CreatedDate
