@@ -8,7 +8,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -25,7 +27,7 @@ public class MainController {
 
     @GetMapping("/posts")
     public List<Post> getPosts() {
-        return postService.findAll();
+        return postService.findAll().stream().sorted(Comparator.comparing(Post::getCreatedAt)).collect(Collectors.toList());
     }
 
     @GetMapping("/posts/{id}")
