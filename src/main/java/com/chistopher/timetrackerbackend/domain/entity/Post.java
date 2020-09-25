@@ -18,6 +18,8 @@ public class Post {
     @GeneratedValue
     private Long id;
 
+    private @NonNull String title;
+
     private @NonNull String content;
 
     @CreatedDate

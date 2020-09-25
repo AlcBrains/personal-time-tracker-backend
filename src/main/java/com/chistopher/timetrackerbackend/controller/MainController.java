@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class MainController {
 
     private final PostService postService;
@@ -33,7 +33,7 @@ public class MainController {
         return postService.get(id);
     }
 
-    @PostMapping("/post")
+    @PostMapping("/posts/post")
     public void savePost(@RequestBody String body) throws JsonProcessingException {
         postService.save(om.readValue(body, Post.class));
     }
